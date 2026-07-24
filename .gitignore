@@ -1,0 +1,11 @@
+# 로컬 개발/편집 도구 설정 (웹사이트에 필요 없음)
+.claude/
+
+# OS가 자동 생성하는 파일
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 임시 파일
+*.tmp
+*~
