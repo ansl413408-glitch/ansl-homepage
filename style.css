@@ -309,9 +309,9 @@ section{padding:110px 0}
 .plist a:hover .ar{transform:translateX(6px);color:var(--accent)}
 
 /* 과제(프로젝트) 목록 */
-.prj-sub{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--accent);
-  text-transform:uppercase;margin:0 0 4px}
-.prj-sub:not(:first-child){margin-top:34px}
+.prj-sub{font-size:25px;font-weight:800;letter-spacing:.08em;color:var(--accent);
+  text-transform:uppercase;margin:0 0 20px}
+.prj-sub:not(:first-child){margin-top:50px}
 .prjlist{list-style:none;padding:0;margin:0}
 .prjlist li{padding:15px 0;border-bottom:1px solid var(--line);display:flex;gap:18px;align-items:baseline}
 .prjlist li:last-child{border-bottom:0}
@@ -395,7 +395,7 @@ section{padding:110px 0}
 @media(max-width:1000px){.topic-body{grid-template-columns:1fr;gap:26px}}
 .topic-fig{
   margin:0;padding:14px;overflow:hidden;
-  border:1px solid var(--line);border-radius:var(--radius);background:var(--soft);
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);
   transition:border-color .35s var(--ease), box-shadow .35s var(--ease);
 }
 .topic-fig:hover{border-color:var(--accent);
