@@ -29,21 +29,16 @@ var NAV = [
   ]},
   { label: 'MEMBERS', href: 'members-professor.html', sub: [
     { label: 'Professor',   href: 'members-professor.html' },
-    { label: 'Researchers', href: 'members-researchers.html' },
-    { label: 'Alumni',      href: 'members-researchers.html#alumni' }
+    { label: 'Researchers', href: 'members-researchers.html' }
   ]},
-  { label: 'GALLERY', href: 'gallery.html', sub: [] },
-  { label: 'RECRUITMENT', href: 'recruitment.html', sub: [
-    { label: 'Join us',  href: 'recruitment.html' },
-    { label: 'Contact',  href: 'recruitment.html#contact' }
-  ]}
+  { label: 'GALLERY', href: 'gallery.html', sub: [] }
 ];
 
 /* ── 푸터 내용 ─────────────────────────────────────────────── */
 var FOOTER = {
   addr:  'Department of Materials Science and Engineering<br>' +
          'Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul',
-  email: 'ansl@snu.ac.kr'
+  email: 'joonkyuhan@snu.ac.kr'
 };
 
 
