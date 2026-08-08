@@ -55,6 +55,19 @@ function fileOf(href) {
 
 
 /* ============================================================
+   ⓵ 파비콘(브라우저 탭 로고) 주입
+      아이콘을 바꾸려면 favicon-32/180/256.png 파일만 교체하세요.
+   ============================================================ */
+(function setFavicon() {
+  var el = document.createElement('link');
+  el.rel = 'icon';
+  el.type = 'image/png';
+  el.href = 'snu_ui_download.png';   // 고해상도 하나로 충분 (브라우저가 자동 축소)
+  document.head.appendChild(el);
+})();
+
+
+/* ============================================================
    ① 헤더 주입
    ============================================================ */
 (function buildHeader() {
@@ -98,7 +111,10 @@ function fileOf(href) {
   mount.innerHTML = '' +
     '<div class="wrap">' +
       '<div class="fl">' +
-        '<div><b>ANSL</b> · Advanced Next-generation Semiconductor Lab<br>' + FOOTER.addr + '</div>' +
+        '<div class="foot-brand">' +
+          '<img class="foot-logo" src="snu-emblem-white.png" alt="Seoul National University">' +
+          '<div><b>ANSL</b> · Advanced Next-generation Semiconductor Lab<br>' + FOOTER.addr + '</div>' +
+        '</div>' +
         '<div><b>Email</b> <a href="mailto:' + FOOTER.email + '">' + FOOTER.email + '</a><br>' +
              '<a href="index.html">Home</a></div>' +
       '</div>' +

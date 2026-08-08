@@ -455,6 +455,9 @@ section{padding:110px 0}
 footer{background:#0f1b28;color:#9aa9b8;padding:56px 0 60px;font-size:13.5px;line-height:1.95}
 footer b{color:#fff;font-weight:700}
 footer .fl{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer .foot-brand{display:flex;align-items:center;gap:24px}   /* 왼쪽 로고 + 오른쪽 문구 */
+footer .foot-logo{flex:0 0 auto;width:66px;height:auto;opacity:.95}
+@media(max-width:560px){footer .foot-logo{width:54px}footer .foot-brand{gap:16px}}
 footer a{color:#9aa9b8;text-decoration:none;transition:color .25s}
 footer a:hover{color:#fff}
 .copy{margin-top:34px;padding-top:22px;border-top:1px solid #1e2c3b;font-size:12px;color:#6b7c8c}
