@@ -393,6 +393,7 @@ section{padding:110px 0}
 /* 연구 주제 본문 : 왼쪽 설명 + 오른쪽 대표 그림 */
 .topic-body{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start}
 @media(max-width:1000px){.topic-body{grid-template-columns:1fr;gap:26px}}
+.topic-body p{text-align:justify}   /* 텍스트를 좌우 폭에 꽉 차게(양쪽 정렬) */
 .topic-fig{
   margin:0;padding:14px;overflow:hidden;
   border:1px solid var(--line);border-radius:var(--radius);background:var(--bg);
