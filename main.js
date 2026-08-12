@@ -18,20 +18,20 @@ var LOGO = { title: 'ANSL', sub: 'Advanced Next-generation Semiconductor Lab' };
    sub   : 마우스를 올리면 펼쳐지는 하위 항목들 (없으면 [] )
 --------------------------------------------------------------- */
 var NAV = [
-  { label: 'RESEARCH', href: 'research.html', sub: [
-    { label: 'Research Topics', href: 'research.html' },
-    { label: 'Projects',        href: 'research.html#projects' }
+  { label: 'RESEARCH', href: 'research', sub: [
+    { label: 'Research Topics', href: 'research' },
+    { label: 'Projects',        href: 'research#projects' }
   ]},
-  { label: 'PUBLICATIONS', href: 'publications-journal.html', sub: [
-    { label: 'Journal',    href: 'publications-journal.html' },
-    { label: 'Conference', href: 'publications-conference.html' },
-    { label: 'Patent',     href: 'publications-patent.html' }
+  { label: 'PUBLICATIONS', href: 'publications-journal', sub: [
+    { label: 'Journal',    href: 'publications-journal' },
+    { label: 'Conference', href: 'publications-conference' },
+    { label: 'Patent',     href: 'publications-patent' }
   ]},
-  { label: 'MEMBERS', href: 'members-professor.html', sub: [
-    { label: 'Professor',   href: 'members-professor.html' },
-    { label: 'Researchers', href: 'members-researchers.html' }
+  { label: 'MEMBERS', href: 'members-professor', sub: [
+    { label: 'Professor',   href: 'members-professor' },
+    { label: 'Researchers', href: 'members-researchers' }
   ]},
-  { label: 'GALLERY', href: 'gallery.html', sub: [] }
+  { label: 'GALLERY', href: 'gallery', sub: [] }
 ];
 
 /* ── 푸터 내용 ─────────────────────────────────────────────── */
@@ -46,11 +46,11 @@ var FOOTER = {
    유틸: 현재 페이지 파일명 (해시 제외)
    ============================================================ */
 function currentFile() {
-  var p = location.pathname.split('/').pop();
-  return (p || 'index.html').toLowerCase();
+  var p = location.pathname.split('/').pop().replace(/\.html$/, '');  /* .html 있어도/없어도 동일 처리 */
+  return (p || 'index').toLowerCase();                                /* 루트('/')는 index */
 }
 function fileOf(href) {
-  return href.split('#')[0].toLowerCase();
+  return href.split('#')[0].replace(/\.html$/, '').toLowerCase();
 }
 
 
@@ -94,7 +94,7 @@ function fileOf(href) {
 
   mount.innerHTML = '' +
     '<div class="hd-inner">' +
-      '<a class="logo" href="index.html"><b>' + LOGO.title + '</b><small>' + LOGO.sub + '</small></a>' +
+      '<a class="logo" href="index"><b>' + LOGO.title + '</b><small>' + LOGO.sub + '</small></a>' +
       '<button class="burger" aria-label="menu">☰</button>' +
       '<nav class="nav">' + cols + '</nav>' +
     '</div>';
@@ -116,7 +116,7 @@ function fileOf(href) {
           '<div><b>ANSL</b> · Advanced Next-generation Semiconductor Lab<br>' + FOOTER.addr + '</div>' +
         '</div>' +
         '<div><b>Email</b> <a href="mailto:' + FOOTER.email + '">' + FOOTER.email + '</a><br>' +
-             '<a href="index.html">Home</a></div>' +
+             '<a href="index">Home</a></div>' +
       '</div>' +
       '<div class="copy">© 2026 ANSL, Seoul National University. All rights reserved.</div>' +
     '</div>';
