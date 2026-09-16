@@ -167,3 +167,26 @@ function fileOf(href) {
     burger.textContent = hd.classList.contains('open') ? '✕' : '☰';
   });
 })();
+
+
+/* ============================================================
+   ⑤ 홈 히어로 위에서는 헤더를 투명하게
+      사진을 지나 스크롤하면 body 에 .scrolled 를 붙여
+      원래의 흰색 헤더로 되돌립니다. (CSS의 body.home 규칙과 짝)
+   ============================================================ */
+(function () {
+  var body = document.body;
+  if (!body.classList.contains('home')) return;
+
+  var hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  function sync() {
+    /* 히어로 끝에서 헤더 높이만큼 남았을 때 전환 */
+    body.classList.toggle('scrolled', window.scrollY > hero.offsetHeight - 100);
+  }
+
+  sync();
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+})();

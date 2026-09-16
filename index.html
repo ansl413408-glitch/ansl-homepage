@@ -8,18 +8,20 @@
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<!-- class="home" : 히어로 사진 위에 헤더가 투명하게 얹히는 모드 (index 전용) -->
+<body class="home">
 
 <!-- 헤더는 main.js 가 자동으로 채웁니다 -->
 <header id="hd"></header>
 
-<!-- ══════════ HERO ══════════ -->
+<!-- ══════════ HERO ══════════
+     ★ 배경 사진을 바꾸려면 style.css 의 `body.home .hero` 안 url(...) 만 수정하세요 -->
 <div class="hero">
   <div class="wrap">
     <div class="eyebrow" data-ani="fade">SEOUL NATIONAL UNIVERSITY · Materials Science and Engineering</div>
     <h1 data-ani="up" data-delay="80">Advanced Next-generation<br>Semiconductor Lab</h1>
     <div class="cta" data-ani="up" data-delay="280">
-      <a class="btn solid" href="research">Explore research</a>
+      <a class="btn solid" href="research">Explore research<span class="btn-ar">→</span></a>
     </div>
   </div>
   <div class="scroll-hint">SCROLL<b>↓</b></div>
