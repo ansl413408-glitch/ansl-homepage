@@ -69,21 +69,50 @@ def find_photo(name):
     return None
 
 
+def aspect(name):
+    """사진의 가로/세로 비율. 여러 장을 나란히 놓을 때 높이를 맞추는 데 씁니다.
+       Pillow 가 없으면 None (그때는 같은 폭으로 나란히 놓임)."""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(PHOTO_DIR, name)) as im:
+            w, h = im.size
+            if im.getexif().get(0x0112) in (5, 6, 7, 8):   # 회전된 사진(EXIF)
+                w, h = h, w
+        return w / h
+    except Exception:
+        return None
+
+
 def render(entry):
-    photo = (entry.get("photo") or "").strip()
+    photo = entry.get("photo") or ""
+    photos = [str(p).strip() for p in photo] if isinstance(photo, (list, tuple)) else [str(photo).strip()]
+    photos = [p for p in photos if p] or [""]
     title = (entry.get("title") or "").strip()
     desc = entry.get("desc") or ""
     mem = entry.get("mem") or ""
     if isinstance(mem, (list, tuple)):
         mem = ", ".join(str(m) for m in mem)
 
-    found = find_photo(photo)
-    src = f"{PHOTO_WEB}/{found}" if found else f"{PHOTO_WEB}/{photo}"
     alt = html.escape(title or "ANSL gallery")
+    figs, all_found = [], True
+    for p in photos:
+        f = find_photo(p)
+        all_found = all_found and bool(f)
+        src = f"{PHOTO_WEB}/{f or p}"
+        style = ""
+        if len(photos) > 1:
+            r = aspect(f) if f else None
+            style = f' style="flex-grow:{r:.4f}"' if r else ""
+        figs.append(f'<figure class="g-photo"{style}><img src="{src}" alt="{alt}" loading="lazy"></figure>')
 
     out = []
     out.append('      <div class="gitem" data-ani="up">')
-    out.append(f'        <figure class="g-photo"><img src="{src}" alt="{alt}" loading="lazy"></figure>')
+    if len(figs) == 1:
+        out.append(f"        {figs[0]}")
+    else:
+        out.append('        <div class="g-photos">')
+        out.extend(f"          {fg}" for fg in figs)
+        out.append("        </div>")
     out.append('        <div class="cap">')
     if title:
         out.append(f'          <div class="t">{html.escape(title)}</div>')
@@ -93,7 +122,7 @@ def render(entry):
         out.append(f'          <div class="mem">{fmt(mem)}</div>')
     out.append("        </div>")
     out.append("      </div>")
-    return "\n".join(out), found
+    return "\n".join(out), all_found
 
 
 def main():
